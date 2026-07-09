@@ -1,13 +1,19 @@
 {
-  "name": "tca-cloudflare",
-  "version": "1.0.0",
-  "description": "The Climate Architects — Cloudflare Pages + Functions",
+  "name": "workspace",
+  "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
-    "dev": "wrangler pages dev public --compatibility-date=2024-01-01",
-    "deploy": "wrangler pages deploy public"
+    "preinstall": "sh -c 'rm -f package-lock.json yarn.lock; case \"$npm_config_user_agent\" in pnpm/*) ;; *) echo \"Use pnpm instead\" >&2; exit 1 ;; esac'",
+    "build": "pnpm run typecheck && pnpm -r --if-present run build",
+    "typecheck:libs": "tsc --build",
+    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
   },
-  "dependencies": {},
+  "private": true,
+  "dependencies": {
+    "@replit/connectors-sdk": "^0.4.1"
+  },
   "devDependencies": {
-    "wrangler": "^3.0.0"
+    "prettier": "^3.9.4",
+    "typescript": "~5.9.3"
   }
 }
