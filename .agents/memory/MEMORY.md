@@ -1,0 +1,1 @@
+- [TCA Dashboard setup](tca-dashboard.md) — static HTML/vanilla JS app served from Express; API routes at /api/* in artifacts/api-server/src/routes/
